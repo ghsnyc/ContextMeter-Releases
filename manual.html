@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ContextMeter User Manual</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1d1d1f; max-width: 700px; margin: 0 auto; padding: 32px 24px; line-height: 1.6; font-size: 15px; }
+  h1 { font-size: 28px; margin-bottom: 4px; }
+  h2 { font-size: 19px; margin-top: 40px; border-bottom: 1px solid #e0e0e5; padding-bottom: 6px; }
+  h3 { font-size: 15px; margin-top: 24px; margin-bottom: 6px; }
+  p { margin: 8px 0; }
+  code { font-family: "SF Mono", Menlo, monospace; font-size: 13px; background: #f2f2f7; padding: 1px 5px; border-radius: 4px; }
+  pre { background: #f2f2f7; padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
+  pre code { background: none; padding: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  th, td { text-align: left; padding: 8px 12px; border: 1px solid #d2d2d7; font-size: 14px; }
+  th { background: #f2f2f7; font-weight: 600; }
+  ul, ol { padding-left: 22px; margin: 8px 0; }
+  li { margin: 4px 0; }
+  .subtitle { color: #6e6e73; font-size: 14px; margin-top: 2px; }
+  .note { background: #f2f2f7; border-left: 3px solid #0071e3; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 14px; }
+  .warning { background: #fff3e0; border-left: 3px solid #ff9500; padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 14px; }
+  a { color: #0071e3; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<h1>ContextMeter</h1>
+<p class="subtitle">User Manual &middot; Version 1.3 &middot; May 2026</p>
+
+<h2>What is ContextMeter?</h2>
+<p>ContextMeter is a macOS menu bar app that shows you how full your Claude Code context window is &mdash; in real time, while you work.</p>
+<p>Claude Code gives each conversation a 200,000 token context window. As you work through a session, that window fills up. When it gets full, Claude starts losing track of earlier parts of your conversation. ContextMeter tells you exactly where you are so you can start a new session before things go sideways.</p>
+
+<h2>Compatibility</h2>
+<p>ContextMeter works with <strong>Claude Code only</strong>. Claude Code is Anthropic&rsquo;s agentic coding tool &mdash; the <code>claude</code> command in your terminal, the Code tab in the Claude Desktop app, and the VS Code extension.</p>
+
+<div class="warning">
+  <strong>⚠️ Important before purchasing:</strong> ContextMeter does <em>not</em> work with the Claude.ai website or the Chat tab in the Claude Desktop app. Those are separate products that don&rsquo;t use Claude Code&rsquo;s session system.
+</div>
+
+<table>
+  <tr><th>What you&rsquo;re using</th><th>Does ContextMeter work?</th></tr>
+  <tr><td><code>claude</code> in terminal</td><td>✅ Yes</td></tr>
+  <tr><td>Claude Desktop app &rarr; Code tab</td><td>✅ Yes</td></tr>
+  <tr><td>VS Code with Claude Code extension</td><td>✅ Yes</td></tr>
+  <tr><td>Claude Desktop app &rarr; Chat tab</td><td>❌ No</td></tr>
+  <tr><td>claude.ai in a browser</td><td>❌ No</td></tr>
+  <tr><td>Your own app using the Anthropic API</td><td>❌ No</td></tr>
+</table>
+
+<p>Not sure if you have Claude Code? It&rsquo;s different from the Claude chat interface &mdash; Claude Code is Anthropic&rsquo;s coding tool, available as a tab in the Claude Desktop app or via the <code>claude</code> command line tool. Free to install at <a href="https://claude.ai/code">claude.ai/code</a>.</p>
+
+<p><strong>System requirement:</strong> macOS 15.0 Sequoia or later.</p>
+
+<h2>Installation</h2>
+<ol>
+  <li>Download <code>ContextMeter.pkg</code> from <a href="https://ghstudios.lemonsqueezy.com">ghstudios.lemonsqueezy.com</a></li>
+  <li>Double-click the <code>.pkg</code> file</li>
+  <li>Follow the installer prompts &mdash; it installs the app and sets up hooks automatically</li>
+  <li>Launch ContextMeter from <code>/Applications/ContextMeter.app</code></li>
+</ol>
+<p>ContextMeter is signed and notarized by Apple. macOS will open it without any security prompts.</p>
+
+<h3>What the installer does</h3>
+<ul>
+  <li>Copies <code>ContextMeter.app</code> to <code>/Applications</code></li>
+  <li>Copies Python hook scripts to <code>~/.claude/token_tracker_hooks/</code></li>
+  <li>Patches <code>~/.claude/settings.json</code> to register the hooks with Claude Code</li>
+</ul>
+<p>No admin password is required. Everything installs to your home folder.</p>
+
+<h2>First Launch &mdash; License Activation</h2>
+<p>ContextMeter requires a license key. On first launch, an activation window appears.</p>
+<ol>
+  <li>Enter your license key (from your purchase receipt)</li>
+  <li>Click <strong>Activate</strong> or press Return</li>
+  <li>ContextMeter verifies the key and unlocks the app</li>
+</ol>
+<p>The key is stored securely in your Mac&rsquo;s Keychain. You only enter it once per machine.</p>
+
+<h3>Transferring to a new machine</h3>
+<p>Each license is valid for a limited number of machines. To move your license:</p>
+<ol>
+  <li>Open <strong>Settings &rarr; License</strong></li>
+  <li>Click <strong>Deactivate on this Mac</strong></li>
+  <li>Install ContextMeter on the new machine and activate with the same key</li>
+</ol>
+
+<h2>The Menu Bar Icon</h2>
+<p>Once installed, ContextMeter lives in your menu bar as a small gauge icon (&#8857;).</p>
+<ul>
+  <li><strong>No active session:</strong> icon shows at rest</li>
+  <li><strong>Active session, context &lt; 60%:</strong> icon is normal</li>
+  <li><strong>Active session, context 60&ndash;84%:</strong> icon turns orange</li>
+  <li><strong>Active session, context &ge; 85%:</strong> icon turns red</li>
+</ul>
+<p>Click the icon to open the popover.</p>
+
+<h2>The Popover</h2>
+
+<h3>Active session card</h3>
+<p>When Claude Code is running, you&rsquo;ll see:</p>
+<ul>
+  <li><strong>Context bar</strong> &mdash; how full the context window is, with token counts</li>
+  <li><strong>Model</strong> &mdash; which Claude model is active</li>
+  <li><strong>Source badge</strong> &mdash; where the session is running (<code>terminal</code>, <code>desktop</code>, or <code>vscode</code>)</li>
+  <li><strong>Token breakdown</strong> &mdash; input, output, cache read</li>
+  <li><strong>Estimated cost</strong> &mdash; based on published Anthropic pricing</li>
+</ul>
+
+<h3>Usage history</h3>
+<p>Four time periods &mdash; Today, This Week, This Month, All Time:</p>
+<ul>
+  <li>Session count</li>
+  <li>Total tokens (input + output + cache)</li>
+  <li>Estimated cost</li>
+</ul>
+
+<h3>Rate Limits</h3>
+<ul>
+  <li><strong>5-hour window</strong> and <strong>7-day window</strong> usage</li>
+  <li>Real percentages shown for Pro and Max subscribers</li>
+  <li>Turn count fallback for free tier or when data isn&rsquo;t available yet</li>
+</ul>
+
+<h3>Recent Sessions</h3>
+<p>Last 5 sessions with start time, model, turn count, peak context %, and source. Click the chevron to expand and see the project path.</p>
+
+<h2>Float Window</h2>
+<p>Click <strong>Float Window</strong> at the bottom of the popover to open a compact always-on-top HUD.</p>
+<ul>
+  <li>Stays visible over all apps, including full-screen</li>
+  <li>Shows the context bar, session info, and rate limits at a glance</li>
+  <li>Drag it anywhere on screen &mdash; position is remembered</li>
+  <li>Close it with the &times; button or toggle it again from the menu bar</li>
+</ul>
+
+<h2>Alerts</h2>
+<p>ContextMeter can send a macOS notification when your context window crosses a threshold.</p>
+<p><strong>Default threshold: 60%</strong></p>
+<p>To change it: <strong>Settings &rarr; General &rarr; Alerts &rarr; Alert threshold</strong></p>
+<p>If Claude Code hits a rate limit or billing error during a session, ContextMeter shows it as an orange/red row below the rate limits section.</p>
+
+<h2>Settings</h2>
+
+<h3>General tab</h3>
+<ul>
+  <li><strong>Launch at login</strong> &mdash; start ContextMeter automatically when you log in</li>
+  <li><strong>Alert threshold</strong> &mdash; percentage at which notifications fire</li>
+  <li><strong>Notify on API errors</strong> &mdash; on/off toggle</li>
+  <li><strong>Appearance</strong> &mdash; show icon, show percentage; font size sliders</li>
+  <li><strong>Data retention</strong> &mdash; how many months of history to keep (3/6/12/24 months)</li>
+</ul>
+
+<h3>License tab</h3>
+<p>Shows your license status, masked key, machine name, and activation date. Use <strong>Deactivate on this Mac</strong> to free the activation for another machine.</p>
+
+<h3>Uninstall tab</h3>
+<ul>
+  <li><strong>Remove Hooks</strong> &mdash; strips ContextMeter from <code>~/.claude/settings.json</code> and deletes hook scripts. Claude Code continues to work normally.</li>
+  <li><strong>Delete Usage Data</strong> &mdash; removes the SQLite database and JSON snapshot.</li>
+</ul>
+
+<h3>About tab</h3>
+<p><strong>Check for Updates</strong> &mdash; manually checks for a new version. ContextMeter also checks automatically once per day.</p>
+
+<h2>Privacy</h2>
+<ul>
+  <li><strong>No conversation content</strong> &mdash; hooks only read token counts, never message content</li>
+  <li><strong>Local only</strong> &mdash; no network calls except for license validation and update checks</li>
+  <li><strong>Your machine only</strong> &mdash; sessions from other devices are not tracked</li>
+  <li><strong>Secure file permissions</strong> &mdash; all data files are <code>chmod 600</code> (readable only by you)</li>
+</ul>
+
+<h2>Troubleshooting</h2>
+
+<h3>Menu bar icon appears but shows no data after starting a session</h3>
+<p>The hooks may not be installed. Check:</p>
+<pre><code>cat ~/.claude/settings.json | grep token_tracker</code></pre>
+<p>If nothing appears, go to <strong>Settings &rarr; General &rarr; Hook Status</strong> and click <strong>Re-install Hooks</strong>.</p>
+
+<h3>Hook log</h3>
+<pre><code>tail -f ~/.claude/logs/token_tracker.log</code></pre>
+
+<h3>Hooks stop firing after a Claude Code update</h3>
+<p>Claude Code updates can sometimes reset <code>~/.claude/settings.json</code>. Go to <strong>Settings &rarr; General &rarr; Hook Status</strong> and click <strong>Re-install Hooks</strong>.</p>
+
+<h3>Still need help?</h3>
+<p>Email <a href="mailto:apps.ghsnyc@gmail.com">apps.ghsnyc@gmail.com</a></p>
+
+<h3>Uninstalling completely</h3>
+<ol>
+  <li>Settings &rarr; Uninstall &rarr; Remove Hooks</li>
+  <li>Settings &rarr; Uninstall &rarr; Delete Usage Data</li>
+  <li>Settings &rarr; License &rarr; Deactivate on this Mac</li>
+  <li>Trash <code>/Applications/ContextMeter.app</code></li>
+</ol>
+
+<h2>Data Locations</h2>
+<table>
+  <tr><th>File</th><th>Purpose</th></tr>
+  <tr><td><code>~/.claude/token_tracker.db</code></td><td>SQLite database &mdash; all session history</td></tr>
+  <tr><td><code>~/.claude/token_tracker_data.json</code></td><td>Live JSON snapshot &mdash; read by the app</td></tr>
+  <tr><td><code>~/.claude/rate_limits_cache.json</code></td><td>Rate limit data from status line</td></tr>
+  <tr><td><code>~/.claude/token_tracker_hooks/</code></td><td>Hook scripts</td></tr>
+  <tr><td><code>~/.claude/logs/token_tracker.log</code></td><td>Hook error log</td></tr>
+</table>
+
+<h2>Version History</h2>
+<table>
+  <tr><th>Version</th><th>Date</th><th>Notes</th></tr>
+  <tr><td>1.0</td><td>April 2026</td><td>Initial release</td></tr>
+  <tr><td>1.1</td><td>April 2026</td><td>StopFailure notifications, floating panel error row, data pruning</td></tr>
+  <tr><td>1.2</td><td>April 2026</td><td>Remove AX monitor false positives; compatibility documentation</td></tr>
+  <tr><td>1.3</td><td>April 2026</td><td>License gate (Lemon Squeezy), automatic in-app updates (Sparkle)</td></tr>
+  <tr><td>1.3.1</td><td>May 2026</td><td>Hard license enforcement; always-latest download URL</td></tr>
+</table>
+
+<hr style="margin-top:40px;border:none;border-top:1px solid #e0e0e5">
+<p style="font-size:12px;color:#6e6e73;text-align:center">&copy; 2026 Glenn Hernandez Studios &middot; <a href="mailto:apps.ghsnyc@gmail.com">apps.ghsnyc@gmail.com</a> &middot; <a href="https://ghstudios.lemonsqueezy.com">ghstudios.lemonsqueezy.com</a></p>
+
+</body>
+</html>
