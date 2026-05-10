@@ -8,6 +8,23 @@
     <description>ContextMeter update feed</description>
     <language>en</language>
     <item>
+      <title>Version 1.3.2</title>
+      <sparkle:releaseNotesLink>
+        https://raw.githubusercontent.com/ghsnyc/ContextMeter-Releases/main/release-notes/1.3.2.html
+      </sparkle:releaseNotesLink>
+      <pubDate>Sun, 10 May 2026 19:42:08 -0400</pubDate>
+      <enclosure
+        url="https://github.com/ghsnyc/ContextMeter-Releases/releases/latest/download/ContextMeter.pkg"
+        sparkle:version="6"
+        sparkle:shortVersionString="1.3.2"
+        sparkle:edSignature="1dLnxaMnxaCXCzoR3Kkjn+YCfDyL/UdnmQuKzZ3OgBaSaMw/+tS62yeqojCJvBcfTzs4O9bOoF7kE7rS5iscBA=="
+        length="2006711"
+        type="application/octet-stream"
+      />
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+    </item>
+
+    <item>
       <title>Version 1.3.1</title>
       <sparkle:releaseNotesLink>
         https://raw.githubusercontent.com/ghsnyc/ContextMeter-Releases/main/release-notes/1.3.1.html
