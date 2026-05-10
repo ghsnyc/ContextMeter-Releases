@@ -5,64 +5,154 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ContextMeter User Manual</title>
 <style>
-  * { box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1d1d1f; max-width: 740px; margin: 0 auto; padding: 32px 24px 60px; line-height: 1.65; font-size: 15px; background: #fff; }
-  h1 { font-size: 30px; margin-bottom: 4px; font-weight: 700; }
-  h2 { font-size: 20px; margin-top: 48px; margin-bottom: 4px; border-bottom: 1px solid #e0e0e5; padding-bottom: 8px; font-weight: 600; }
-  h3 { font-size: 16px; margin-top: 28px; margin-bottom: 6px; font-weight: 600; }
-  h4 { font-size: 14px; margin-top: 18px; margin-bottom: 4px; font-weight: 600; color: #3a3a3c; }
+  /* ── Base ── */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0c1a2e;
+    color: #dde6f0;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 28px 72px;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── Typography ── */
+  h1 { font-size: 32px; font-weight: 700; color: #e8f4ff; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .subtitle { color: #4ade80; font-size: 13px; font-weight: 500; letter-spacing: 0.3px; margin-bottom: 0; }
+
+  h2 {
+    font-size: 19px; font-weight: 600;
+    color: #7dd3fc;
+    margin-top: 52px; margin-bottom: 6px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #4ade80;
+  }
+  h3 { font-size: 15px; font-weight: 600; color: #bfdbfe; margin-top: 28px; margin-bottom: 6px; }
+  h4 { font-size: 13px; font-weight: 600; color: #93c5fd; margin-top: 16px; margin-bottom: 4px; }
   p { margin: 10px 0; }
-  code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; background: #f2f2f7; padding: 2px 6px; border-radius: 4px; }
-  pre { background: #f2f2f7; padding: 14px 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
-  pre code { background: none; padding: 0; }
+
+  /* ── Links ── */
+  a { color: #60a5fa; text-decoration: none; }
+  a:hover { color: #93c5fd; text-decoration: underline; }
+
+  /* ── Code ── */
+  code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px;
+    background: #112035;
+    color: #86efac;
+    padding: 2px 7px;
+    border-radius: 4px;
+    border: 1px solid #1e3a52;
+  }
+  pre {
+    background: #080f1a;
+    border: 1px solid #1e3a52;
+    padding: 16px 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  pre code { background: none; border: none; padding: 0; color: #86efac; }
+
+  /* ── Tables ── */
   table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 14px; }
-  th, td { text-align: left; padding: 9px 12px; border: 1px solid #d2d2d7; }
-  th { background: #f2f2f7; font-weight: 600; }
-  tr:nth-child(even) { background: #fafafa; }
+  th, td { text-align: left; padding: 9px 13px; border: 1px solid #1a3248; }
+  th { background: #0d2035; color: #7dd3fc; font-weight: 600; }
+  tr:nth-child(even) td { background: #0b1a2b; }
+  tr:nth-child(odd) td { background: #0c1e30; }
+
+  /* ── Lists ── */
   ul, ol { padding-left: 22px; margin: 8px 0; }
-  li { margin: 5px 0; }
-  .subtitle { color: #6e6e73; font-size: 14px; margin-top: 4px; }
+  li { margin: 5px 0; color: #dde6f0; }
 
-  /* Callout boxes */
-  .note   { background: #f0f7ff; border-left: 3px solid #0071e3; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
-  .tip    { background: #f0fff4; border-left: 3px solid #34c759; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
-  .warning{ background: #fff8e6; border-left: 3px solid #ff9500; padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; font-size: 14px; }
-  .note strong, .tip strong, .warning strong { display: block; margin-bottom: 4px; }
+  /* ── Callout boxes ── */
+  .note {
+    background: #0a1f38;
+    border-left: 3px solid #3b82f6;
+    padding: 13px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 18px 0;
+    font-size: 14px;
+    color: #bfdbfe;
+  }
+  .tip {
+    background: #071e12;
+    border-left: 3px solid #4ade80;
+    padding: 13px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 18px 0;
+    font-size: 14px;
+    color: #bbf7d0;
+  }
+  .warning {
+    background: #1c1400;
+    border-left: 3px solid #f59e0b;
+    padding: 13px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 18px 0;
+    font-size: 14px;
+    color: #fde68a;
+  }
+  .note strong, .tip strong, .warning strong { display: block; margin-bottom: 5px; }
+  .note ul, .tip ul, .warning ul { margin-top: 8px; }
 
-  /* Screenshots */
-  figure { margin: 24px 0; text-align: center; }
-  figure img { max-width: 100%; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.13); display: block; margin: 0 auto; }
-  .side-by-side { display: flex; gap: 24px; align-items: flex-start; justify-content: center; flex-wrap: wrap; }
-  .side-by-side figure { margin: 0; }
-  .side-by-side figure img { max-width: 280px; }
-  figcaption { margin-top: 8px; font-size: 13px; color: #6e6e73; font-style: italic; }
+  /* ── Screenshots ── */
+  .screenshots {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 28px 0;
+  }
+  .screenshots figure { margin: 0; text-align: center; flex: 0 0 auto; }
+  .screenshots figure img {
+    border-radius: 14px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(125,211,252,0.08);
+    display: block;
+    max-width: 280px;
+  }
+  figcaption {
+    margin-top: 9px;
+    font-size: 12px;
+    color: #4ade80;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+  }
 
-  /* Token color dots */
-  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+  /* ── Token color dots ── */
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
   .dot-input  { background: #3b82f6; }
   .dot-output { background: #a855f7; }
-  .dot-cache  { background: #94a3b8; }
+  .dot-cache  { background: #64748b; }
 
-  /* Stat explainer rows */
-  .stat-row { display: flex; gap: 12px; margin: 12px 0; align-items: flex-start; }
-  .stat-label { min-width: 120px; font-weight: 600; font-size: 14px; padding-top: 1px; }
-  .stat-desc { font-size: 14px; color: #3a3a3c; line-height: 1.55; }
+  /* ── Stat explainer rows ── */
+  .stat-row { display: flex; gap: 14px; margin: 14px 0; align-items: flex-start; }
+  .stat-label { min-width: 130px; font-weight: 600; font-size: 14px; color: #93c5fd; padding-top: 1px; flex-shrink: 0; }
+  .stat-desc { font-size: 14px; color: #c4d4e8; line-height: 1.6; }
 
-  /* Color chips */
-  .chip { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 12px; font-weight: 600; color: #fff; margin-right: 4px; }
-  .chip-green  { background: #34c759; }
-  .chip-orange { background: #ff9500; }
-  .chip-red    { background: #ff3b30; }
+  /* ── Color chips ── */
+  .chip { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; margin-right: 4px; }
+  .chip-green  { background: #14532d; color: #4ade80; border: 1px solid #166534; }
+  .chip-orange { background: #431407; color: #fb923c; border: 1px solid #9a3412; }
+  .chip-red    { background: #450a0a; color: #f87171; border: 1px solid #991b1b; }
 
-  a { color: #0071e3; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  hr { margin-top: 48px; border: none; border-top: 1px solid #e0e0e5; }
+  /* ── Divider ── */
+  hr { margin-top: 52px; border: none; border-top: 1px solid #1a3248; }
+
+  /* ── Footer ── */
+  .footer { font-size: 12px; color: #334f6b; text-align: center; margin-top: 16px; }
+  .footer a { color: #3d6080; }
 </style>
 </head>
 <body>
 
 <h1>ContextMeter</h1>
-<p class="subtitle">User Manual &middot; Version 1.3 &middot; May 2026</p>
+<p class="subtitle">USER MANUAL &nbsp;&bull;&nbsp; VERSION 1.3 &nbsp;&bull;&nbsp; MAY 2026</p>
 
 <!-- ═══════════════════════════════════════ -->
 <h2>What is ContextMeter?</h2>
@@ -80,7 +170,7 @@
 <p>ContextMeter works with <strong>Claude Code only</strong>. Claude Code is Anthropic&rsquo;s agentic coding tool &mdash; the <code>claude</code> command in your terminal, the Code tab in the Claude Desktop app, and the VS Code extension.</p>
 
 <div class="warning">
-  <strong>&#9888;&#65039; Important before purchasing:</strong>
+  <strong>&#9888;&#65039; Important before purchasing</strong>
   ContextMeter does <em>not</em> work with the Claude.ai website or the Chat tab in the Claude Desktop app. Those are separate products that don&rsquo;t use Claude Code&rsquo;s session system, so there is nothing for ContextMeter to read.
 </div>
 
@@ -95,7 +185,6 @@
 </table>
 
 <p>Not sure if you have Claude Code? It&rsquo;s different from the Claude chat interface &mdash; Claude Code is Anthropic&rsquo;s coding tool, available as a tab in the Claude Desktop app or via the <code>claude</code> command line tool. Free to install at <a href="https://claude.ai/code">claude.ai/code</a>.</p>
-
 <p><strong>System requirement:</strong> macOS 15.0 Sequoia or later.</p>
 
 <!-- ═══════════════════════════════════════ -->
@@ -114,11 +203,11 @@
   <li>Copies lightweight Python hook scripts to <code>~/.claude/token_tracker_hooks/</code></li>
   <li>Registers the hooks with Claude Code via <code>~/.claude/settings.json</code></li>
 </ul>
-<p>No admin password is required. Everything installs to your home folder. The hooks use only Python&rsquo;s standard library &mdash; no third-party packages, no network access.</p>
+<p>No admin password required. Everything installs to your home folder. The hooks use only Python&rsquo;s standard library &mdash; no third-party packages, no network access.</p>
 
 <!-- ═══════════════════════════════════════ -->
 <h2>First Launch &mdash; License Activation</h2>
-<p>On first launch an activation window appears. Enter your license key (from your purchase receipt) and click <strong>Activate</strong>. ContextMeter verifies the key and unlocks. The key is stored in your Mac&rsquo;s Keychain &mdash; you only enter it once per machine.</p>
+<p>On first launch an activation window appears. Enter your license key (from your purchase receipt) and click <strong>Activate</strong>. The key is stored in your Mac&rsquo;s Keychain &mdash; you only enter it once per machine.</p>
 
 <h3>Transferring to a new machine</h3>
 <ol>
@@ -132,24 +221,22 @@
 
 <table>
   <tr><th>State</th><th>What you see</th></tr>
-  <tr><td>No active Claude Code session</td><td>Icon at rest, no percentage</td></tr>
-  <tr><td>Active, context &lt; 60%</td><td><span class="chip chip-green">Green</span> &mdash; plenty of headroom, work normally</td></tr>
-  <tr><td>Active, context 60&ndash;84%</td><td><span class="chip chip-orange">Orange</span> &mdash; approaching the limit, plan a stopping point</td></tr>
+  <tr><td>No active session</td><td>Icon at rest, no percentage</td></tr>
+  <tr><td>Active, context &lt; 60%</td><td><span class="chip chip-green">Green</span> &mdash; plenty of headroom</td></tr>
+  <tr><td>Active, context 60&ndash;84%</td><td><span class="chip chip-orange">Orange</span> &mdash; approaching the limit</td></tr>
   <tr><td>Active, context &ge; 85%</td><td><span class="chip chip-red">Red</span> &mdash; start a new session soon</td></tr>
 </table>
-
-<p>Click the icon to open the full popover.</p>
 
 <!-- ═══════════════════════════════════════ -->
 <h2>The Popover &amp; Float Window</h2>
 
-<div class="side-by-side">
+<div class="screenshots">
   <figure>
-    <img src="img-popover.png" alt="ContextMeter full popover — active session at 68% context with token breakdown, usage history, rate limits, and recent sessions">
+    <img src="img-popover.png" alt="ContextMeter full popover — active session at 68% context">
     <figcaption>Full popover &mdash; click the menu bar icon</figcaption>
   </figure>
   <figure>
-    <img src="img-float.png" alt="ContextMeter float window — compact always-on-top HUD showing 68% context, token breakdown, model, and cost">
+    <img src="img-float.png" alt="ContextMeter float window — compact always-on-top HUD">
     <figcaption>Float window &mdash; always-on-top compact HUD</figcaption>
   </figure>
 </div>
@@ -159,18 +246,18 @@
 
 <div class="tip">
   <strong>When should you start a new session?</strong>
-  70&ndash;80% is a good target. At that point Claude still has strong recall of everything in your session. Wait until 95%+ and Claude may already be losing context of decisions made earlier &mdash; you might notice it repeating questions or forgetting constraints you set at the start of the conversation.
+  70&ndash;80% is the sweet spot. At that point Claude still has strong recall of everything in your session. Wait until 95%+ and Claude may already be losing context of decisions made early in your conversation &mdash; you might notice it repeating questions or forgetting constraints you set at the start.
 </div>
 
 <h3>Float window</h3>
-<p>Click <strong>Float Window</strong> at the bottom of the popover to open a compact always-on-top HUD. It stays visible over all apps including full-screen &mdash; perfect for keeping an eye on context while working in your editor or terminal. Drag it anywhere on screen; its position is remembered between launches.</p>
+<p>Click <strong>Float Window</strong> at the bottom of the popover to open a compact always-on-top HUD. It stays visible over all apps including full-screen. Drag it anywhere on screen &mdash; its position is remembered between launches. Close it with the &times; button or click Float Window again to toggle it off.</p>
 
 <!-- ═══════════════════════════════════════ -->
 <h2>Understanding Your Numbers</h2>
-<p>This section explains what each piece of data means and how it affects you as a Claude Code user.</p>
+<p>This section explains what each number means and how it affects you as a Claude Code user.</p>
 
 <h3>Context window &mdash; the progress bar</h3>
-<p>The bar and percentage show how much of Claude&rsquo;s 200,000-token working memory is used in the current session. It&rsquo;s a cumulative total of everything in your conversation: your messages, Claude&rsquo;s responses, file contents you&rsquo;ve shared, tool call results, and system context.</p>
+<p>The bar and percentage show how much of Claude&rsquo;s 200,000-token working memory is used in the current session. It accumulates everything: your messages, Claude&rsquo;s responses, file contents, tool call results, and system context.</p>
 
 <table>
   <tr><th>Color</th><th>Range</th><th>What it means</th></tr>
@@ -180,57 +267,57 @@
 </table>
 
 <div class="note">
-  <strong>Why context fills fast in coding sessions:</strong>
-  When Claude reads your project files, edits code, and runs tools, every result gets added to the context window. A session that reads a 500-line file 10 times and generates 2,000 lines of code output can use 60%+ of the window in a single afternoon. This is normal &mdash; ContextMeter just makes it visible so you&rsquo;re never surprised.
+  <strong>Why context fills fast in coding sessions</strong>
+  When Claude reads your project files, edits code, and runs tools, every result gets added to the context window. A session that reads a 500-line file 10 times and generates 2,000 lines of output can use 60%+ of the window in a single afternoon. This is normal &mdash; ContextMeter just makes it visible so you&rsquo;re never surprised.
 </div>
 
 <h3>Token breakdown</h3>
 <p>Tokens are the fundamental units Claude uses to process everything. Every session accumulates three types, shown in the active session card and float window:</p>
 
 <div class="stat-row">
-  <div class="stat-label"><span class="dot dot-input"></span> Input</div>
+  <div class="stat-label"><span class="dot dot-input"></span>Input</div>
   <div class="stat-desc">
-    <strong>Tokens in your messages to Claude</strong> &mdash; your prompts, questions, and any code or text you paste directly into the chat. This is typically the smallest number by far. If you&rsquo;re writing short prompts and letting Claude do the heavy lifting, Input stays low.
+    <strong style="color:#93c5fd">Tokens in your messages to Claude</strong> &mdash; your prompts, questions, and any code or text you paste directly into the chat. This is typically the smallest number by far. If you&rsquo;re sending short prompts and letting Claude do the heavy lifting, Input stays very low.
   </div>
 </div>
 
 <div class="stat-row">
-  <div class="stat-label"><span class="dot dot-output"></span> Output</div>
+  <div class="stat-label"><span class="dot dot-output"></span>Output</div>
   <div class="stat-desc">
-    <strong>Tokens Claude generates in its responses</strong> &mdash; code, explanations, analysis, and the results of tool calls. This is almost always your biggest cost driver. Output tokens are priced higher than input tokens (roughly 3&ndash;5&times; more per million on most models). Sessions that generate long code files or detailed explanations will show a large Output number.
+    <strong style="color:#93c5fd">Tokens Claude generates in its responses</strong> &mdash; code, explanations, analysis, and tool call results. This is almost always your biggest cost driver. Output tokens are priced higher than input tokens (roughly 3&ndash;5&times; more per million on most models). Sessions that generate long code files or detailed explanations will show a large Output number.
   </div>
 </div>
 
 <div class="stat-row">
-  <div class="stat-label"><span class="dot dot-cache"></span> Cache Read</div>
+  <div class="stat-label"><span class="dot dot-cache"></span>Cache Read</div>
   <div class="stat-desc">
-    <strong>Tokens served from Anthropic&rsquo;s prompt cache</strong> &mdash; large, repeated context like your system prompt, project files, or codebase that Claude has already seen gets cached automatically after the first turn. Each subsequent turn reads those files from cache instead of re-processing them from scratch. <em>Cache read tokens cost about 90% less than regular input tokens</em> &mdash; so a very large Cache number is actually good news for your bill.
+    <strong style="color:#93c5fd">Tokens served from Anthropic&rsquo;s prompt cache</strong> &mdash; large, repeated context like system prompts and project files get cached automatically after the first turn. Each subsequent turn reads those files from cache instead of re-processing them. <em>Cache read tokens cost about 90% less than regular input tokens</em> &mdash; so a very large Cache number is actually good news for your bill.
   </div>
 </div>
 
 <div class="note">
-  <strong>Real-world example:</strong>
-  A session showing Input: 116 &bull; Output: 50k &bull; Cache: 8.8M tells the story of a Claude Code session where:
-  <ul style="margin-top: 8px; margin-bottom: 0">
-    <li><strong>Input 116</strong> &mdash; very short prompts were being sent each turn</li>
-    <li><strong>Output 50,000</strong> &mdash; Claude generated a substantial amount of code and explanations over the session</li>
-    <li><strong>Cache 8,800,000</strong> &mdash; Claude was reading the same project files repeatedly, but serving them from Anthropic&rsquo;s cache each time at ~$0.03/million instead of the full input price of ~$3/million</li>
+  <strong>Real-world example &mdash; reading the numbers in the screenshot above</strong>
+  That session shows Input: 116 &bull; Output: 50k &bull; Cache: 8.8M &bull; Cost: ~$4.62.
+  <ul>
+    <li><strong>Input 116</strong> &mdash; very short prompts were sent each turn</li>
+    <li><strong>Output 50,000</strong> &mdash; Claude generated a substantial amount of code and explanations over 95 turns</li>
+    <li><strong>Cache 8,800,000</strong> &mdash; Claude re-read the same project files over and over, but served them from Anthropic&rsquo;s cache at ~$0.03/million instead of the full input price of ~$3/million</li>
     <li><strong>Cost ~$4.62</strong> &mdash; for 8.8 million tokens processed, this is efficient. If those cache tokens had been billed as regular input, the cost would have been roughly 10&times; higher.</li>
   </ul>
   The cache is doing its job. This is Claude Code working as designed.
 </div>
 
 <h3>Estimated cost</h3>
-<p>The <strong>~$X.XX</strong> figure is calculated by applying Anthropic&rsquo;s published per-token pricing for the active model to your Input, Output, and Cache Read totals. The tilde (~) prefix means <em>approximately</em> &mdash; actual charges on your Anthropic bill may differ slightly due to rounding and any pricing updates.</p>
-
-<p>The <strong>This month</strong> figure (visible below the usage history tabs) is your estimated total Claude Code spend across all sessions on this machine for the current calendar month.</p>
+<p>The <strong>~$X.XX</strong> figure applies Anthropic&rsquo;s published per-token pricing for the active model to your Input, Output, and Cache Read totals. The tilde (~) means <em>approximately</em> &mdash; actual charges on your Anthropic bill may differ slightly due to rounding.</p>
+<p>The <strong>This month</strong> figure (below the usage history tabs) is your estimated total Claude Code spend across all sessions on this machine for the current calendar month.</p>
 
 <div class="tip">
-  <strong>Cost rule of thumb:</strong> Output tokens are the most expensive type. If your monthly cost is higher than expected, look at your Output totals &mdash; sessions that generate long code files or detailed write-ups are the main driver. Cache Read volume has very little impact on cost regardless of how large it gets.
+  <strong>Cost rule of thumb</strong>
+  Output tokens are the most expensive type. If your monthly cost feels high, look at your Output totals &mdash; long code generation sessions are the main driver. Cache Read volume has almost no impact on cost, regardless of how large it gets.
 </div>
 
 <h3>Turns</h3>
-<p>Each time you send a message and Claude responds = 1 turn. Tool calls that Claude makes within a single response (reading a file, running a command, editing code) don&rsquo;t add extra turns &mdash; they&rsquo;re part of that response. A high turn count (50+) indicates a productive, extended working session.</p>
+<p>Each time you send a message and Claude responds = 1 turn. Tool calls Claude makes within a single response (reading a file, running a command, editing code) don&rsquo;t add extra turns &mdash; they&rsquo;re part of that response. A high turn count (50+) indicates an extended, productive working session.</p>
 
 <h3>Source badge</h3>
 <p>Shows <em>where</em> your Claude Code session is running:</p>
@@ -239,23 +326,22 @@
   <li><strong>desktop</strong> &mdash; the Code tab in the Claude Desktop app</li>
   <li><strong>vscode</strong> &mdash; the Claude Code extension inside VS Code</li>
 </ul>
-<p>If you run multiple Claude Code sessions simultaneously, ContextMeter tracks the most recently active one and shows its source badge.</p>
 
 <!-- ═══════════════════════════════════════ -->
 <h2>Usage History</h2>
-<p>Four time periods &mdash; <strong>Today, This Week, This Month, All Time</strong> &mdash; each showing total sessions, total tokens (Input + Output + Cache combined), and estimated cost for that period.</p>
+<p>Four time periods &mdash; <strong>Today, This Week, This Month, All Time</strong> &mdash; each showing total sessions, total tokens (Input + Output + Cache combined), and estimated cost.</p>
 
 <div class="note">
   <strong>Why does Today show 0 tokens while a session is active?</strong>
-  ContextMeter writes session totals to its database when a session <em>ends</em>, not continuously. The active session card always shows live real-time values, but the usage history totals only update once the session finishes. This prevents double-counting. Once you end your Claude Code session, the numbers will update within seconds.
+  ContextMeter writes session totals to its database when a session <em>ends</em>, not continuously. The active session card always shows live real-time values, but the usage history totals only update once the session finishes. This prevents double-counting. Once you end your Claude Code session, the numbers update within seconds.
 </div>
 
 <!-- ═══════════════════════════════════════ -->
 <h2>Rate Limits</h2>
-<p>Claude Code enforces usage limits on rolling time windows. ContextMeter reads these from Claude Code&rsquo;s status line and displays them so you can see how close you are before hitting a wall mid-session.</p>
+<p>Claude Code enforces usage limits on rolling time windows. ContextMeter reads these from Claude Code&rsquo;s status line so you can see how close you are before hitting a wall mid-session.</p>
 
 <h3>5-hour window</h3>
-<p>A rolling 5-hour cap on tool calls. If you hit it, Claude Code pauses and tells you how long until the window resets. It resets automatically &mdash; no action needed from you. The cap starts fresh from the first tool call in any given 5-hour window.</p>
+<p>A rolling 5-hour cap on tool calls. If you hit it, Claude Code pauses and tells you when the window resets. Resets automatically &mdash; no action needed from you.</p>
 
 <h3>7-day window</h3>
 <p>A rolling 7-day (weekly) cap. Pro and Max subscribers get higher limits than free accounts. You&rsquo;ll almost never hit this unless you&rsquo;re running intensive automated sessions.</p>
@@ -264,13 +350,13 @@
 <p>If you haven&rsquo;t used Claude Code in the last 5 hours, the 5-hour count shows 0 &mdash; even if you&rsquo;ve had a busy day. The 7-day count shows your full week&rsquo;s cumulative usage, which will be much higher. Seeing &ldquo;0 tool calls&rdquo; in the 5-hour window alongside 1,000+ in the 7-day window is completely normal.</p>
 
 <h3>&ldquo;Activity only &middot; Pro/Max for %&rdquo;</h3>
-<p>Percentage-based rate limit display (e.g. &ldquo;23% of 5-hour limit used&rdquo;) requires Anthropic to expose your plan&rsquo;s cap size &mdash; they only do this for Pro and Max subscribers. On a free account, ContextMeter shows raw tool call counts instead. The label means: data is available, but the percentage breakdown requires a paid plan.</p>
+<p>The percentage-based rate limit display requires Anthropic to expose your plan&rsquo;s cap size &mdash; they only do this for Pro and Max subscribers. On a free account, ContextMeter shows raw tool call counts instead.</p>
 
 <!-- ═══════════════════════════════════════ -->
 <h2>Recent Sessions</h2>
 <p>The last 5 completed Claude Code sessions, each showing start time, model, turn count, peak context %, and source badge. Click the chevron (&rsaquo;) to expand any session and see the project folder path.</p>
 
-<p><strong>Peak context %</strong> is the highest context percentage reached during that session. Color-coded green / orange / red using the same thresholds as the live bar. A session that peaked at 45% was short or low-context; one at 89% was pushing the limit.</p>
+<p><strong>Peak context %</strong> is the highest context percentage reached during that session &mdash; color-coded using the same green / orange / red thresholds as the live bar.</p>
 
 <div class="note">
   <strong>Why do older sessions show &ldquo;0% peak&rdquo; or &ldquo;unknown&rdquo;?</strong>
@@ -281,7 +367,7 @@
 <h2>Alerts</h2>
 <p>ContextMeter sends a macOS notification when your context crosses your configured threshold.</p>
 <p><strong>Default threshold: 60%</strong> &mdash; change it at <strong>Settings &rarr; General &rarr; Alerts &rarr; Alert threshold</strong></p>
-<p>The orange banner at the top of the popover also appears while context stays above the threshold. A notification fires once per crossing &mdash; you won&rsquo;t be notified repeatedly if context stays high.</p>
+<p>A notification fires once per crossing. You won&rsquo;t be notified repeatedly if context stays high for a long session.</p>
 
 <h3>API error notifications</h3>
 <p>If Claude Code hits a rate limit or billing error mid-session, ContextMeter shows it as a colored row below the rate limits section and fires a notification once per new error. Toggle this off at <strong>Settings &rarr; General &rarr; Alerts &rarr; Notify on API errors</strong>.</p>
@@ -292,34 +378,34 @@
 <h3>General tab</h3>
 <ul>
   <li><strong>Launch at login</strong> &mdash; start ContextMeter automatically when you log in</li>
-  <li><strong>Alert threshold</strong> &mdash; the % at which notifications fire (default 60%)</li>
+  <li><strong>Alert threshold</strong> &mdash; % at which notifications fire (default 60%)</li>
   <li><strong>Notify on API errors</strong> &mdash; on/off toggle for rate limit and billing error alerts</li>
-  <li><strong>Appearance</strong> &mdash; show icon only, or icon + percentage in the menu bar; font size sliders for menu bar, popover, and float window independently</li>
+  <li><strong>Appearance</strong> &mdash; show icon only or icon + percentage; font size sliders for menu bar, popover, and float window independently</li>
   <li><strong>Data retention</strong> &mdash; how many months of session history to keep (3, 6, 12, or 24 months). Data older than this is pruned automatically at startup.</li>
-  <li><strong>Purge now</strong> &mdash; immediately deletes data older than your retention period</li>
-  <li><strong>Hook status</strong> &mdash; shows whether each hook script is installed and whether it matches the current app version. If hooks are missing or outdated, tracking stops. Click <strong>Re-install Hooks</strong> to restore them silently.</li>
+  <li><strong>Purge now</strong> &mdash; immediately deletes data older than your retention setting</li>
+  <li><strong>Hook status</strong> &mdash; shows whether each hook script is installed and up to date. Click <strong>Re-install Hooks</strong> to restore them if missing.</li>
 </ul>
 
 <h3>API Key tab</h3>
-<p>Optional. If you add an Anthropic API key, ContextMeter can validate it and show available models. Not required for any core functionality &mdash; ContextMeter reads token data from Claude Code&rsquo;s local session files, not the API directly.</p>
+<p>Optional. If you add an Anthropic API key, ContextMeter can validate it and show available models. Not required for any core functionality.</p>
 
 <h3>License tab</h3>
-<p>Shows your license status, masked key, machine name, and activation date. Use <strong>Deactivate on this Mac</strong> to release this machine&rsquo;s activation slot so the key can be used on another Mac.</p>
+<p>Shows your license status, masked key, machine name, and activation date. Use <strong>Deactivate on this Mac</strong> to release this machine&rsquo;s activation slot.</p>
 
 <h3>Uninstall tab</h3>
 <ul>
-  <li><strong>Remove Hooks</strong> &mdash; strips ContextMeter from <code>~/.claude/settings.json</code> and deletes the hook scripts. Claude Code continues working normally; ContextMeter just stops receiving data.</li>
-  <li><strong>Delete Usage Data</strong> &mdash; permanently removes the SQLite database and JSON snapshot. This cannot be undone.</li>
+  <li><strong>Remove Hooks</strong> &mdash; strips ContextMeter from <code>~/.claude/settings.json</code> and deletes hook scripts. Claude Code keeps working normally.</li>
+  <li><strong>Delete Usage Data</strong> &mdash; permanently removes the SQLite database and JSON snapshot.</li>
 </ul>
 
-<h3>About tab &mdash; Check for Updates</h3>
-<p>ContextMeter checks for updates automatically once per day. When a new version is available, a dialog appears with release notes and an <strong>Install Update</strong> button &mdash; no manual download needed. You can also trigger a manual check at any time from this tab.</p>
+<h3>About &mdash; Check for Updates</h3>
+<p>ContextMeter checks for updates automatically once per day via Sparkle. When available, a dialog appears with release notes and an Install button &mdash; no manual download needed.</p>
 
 <!-- ═══════════════════════════════════════ -->
 <h2>Privacy</h2>
 <ul>
-  <li><strong>No conversation content</strong> &mdash; hooks read only token counts from Claude Code&rsquo;s usage metadata. Your message text, code, and files are never read or stored by ContextMeter.</li>
-  <li><strong>Local only</strong> &mdash; no network calls except license validation (once at launch, re-checked weekly) and update checks (once daily)</li>
+  <li><strong>No conversation content</strong> &mdash; hooks read only token counts from Claude Code&rsquo;s usage metadata. Your message text and code are never read or stored.</li>
+  <li><strong>Local only</strong> &mdash; no network calls except license validation (at launch) and update checks (daily)</li>
   <li><strong>Your machine only</strong> &mdash; sessions from other devices are not tracked</li>
   <li><strong>Secure file permissions</strong> &mdash; all data files are <code>chmod 600</code> (readable only by your user account)</li>
   <li><strong>Offline capable</strong> &mdash; works without internet; a 45-day grace period applies if the license server is unreachable</li>
@@ -329,19 +415,17 @@
 <h2>Troubleshooting</h2>
 
 <h3>Menu bar shows but no data after starting a session</h3>
-<p>Hooks may not be installed or registered. Go to <strong>Settings &rarr; General &rarr; Hook Status</strong> and click <strong>Re-install Hooks</strong>. Or verify manually:</p>
+<p>Go to <strong>Settings &rarr; General &rarr; Hook Status &rarr; Re-install Hooks</strong>. Or verify manually:</p>
 <pre><code>cat ~/.claude/settings.json | grep token_tracker</code></pre>
-<p>If nothing appears, the hooks aren&rsquo;t registered with Claude Code. Re-install from Settings.</p>
 
 <h3>Check the hook log</h3>
 <pre><code>tail -f ~/.claude/logs/token_tracker.log</code></pre>
-<p>This is the first place to look when something seems wrong with data collection.</p>
 
 <h3>Hooks stop working after a Claude Code update</h3>
-<p>Claude Code updates can reset <code>~/.claude/settings.json</code>, unregistering the hooks. Go to <strong>Settings &rarr; General &rarr; Hook Status &rarr; Re-install Hooks</strong>. This takes about 2 seconds.</p>
+<p>Claude Code updates can reset <code>~/.claude/settings.json</code>. Go to <strong>Settings &rarr; General &rarr; Hook Status &rarr; Re-install Hooks</strong>.</p>
 
 <h3>Usage history shows 0 during an active session</h3>
-<p>Expected behavior &mdash; usage totals are written when a session <em>ends</em>, not continuously. The active session card shows live data. Once you end the Claude Code session, the history totals update within seconds.</p>
+<p>Expected &mdash; totals are written when a session ends. The active session card shows live data. End the Claude Code session and the history updates within seconds.</p>
 
 <h3>Still need help?</h3>
 <p>Email <a href="mailto:apps.ghsnyc@gmail.com">apps.ghsnyc@gmail.com</a> or use the feedback button in <strong>Settings &rarr; About</strong>.</p>
@@ -350,7 +434,7 @@
 <ol>
   <li>Settings &rarr; Uninstall &rarr; Remove Hooks</li>
   <li>Settings &rarr; Uninstall &rarr; Delete Usage Data</li>
-  <li>Settings &rarr; License &rarr; Deactivate on this Mac (frees the activation for another machine)</li>
+  <li>Settings &rarr; License &rarr; Deactivate on this Mac</li>
   <li>Trash <code>/Applications/ContextMeter.app</code></li>
 </ol>
 
@@ -359,7 +443,7 @@
 <table>
   <tr><th>File</th><th>Purpose</th></tr>
   <tr><td><code>~/.claude/token_tracker.db</code></td><td>SQLite database &mdash; all session history</td></tr>
-  <tr><td><code>~/.claude/token_tracker_data.json</code></td><td>Live JSON snapshot &mdash; read by the app in real time</td></tr>
+  <tr><td><code>~/.claude/token_tracker_data.json</code></td><td>Live JSON snapshot read by the app in real time</td></tr>
   <tr><td><code>~/.claude/rate_limits_cache.json</code></td><td>Rate limit data from Claude Code&rsquo;s status line</td></tr>
   <tr><td><code>~/.claude/token_tracker_hooks/</code></td><td>Hook scripts installed by ContextMeter</td></tr>
   <tr><td><code>~/.claude/logs/token_tracker.log</code></td><td>Hook error log &mdash; check here first when debugging</td></tr>
@@ -377,7 +461,7 @@
 </table>
 
 <hr>
-<p style="font-size:12px;color:#6e6e73;text-align:center;margin-top:16px">&copy; 2026 Glenn Hernandez Studios &middot; <a href="mailto:apps.ghsnyc@gmail.com">apps.ghsnyc@gmail.com</a> &middot; <a href="https://ghstudios.lemonsqueezy.com">ghstudios.lemonsqueezy.com</a></p>
+<p class="footer">&copy; 2026 Glenn Hernandez Studios &nbsp;&bull;&nbsp; <a href="mailto:apps.ghsnyc@gmail.com">apps.ghsnyc@gmail.com</a> &nbsp;&bull;&nbsp; <a href="https://ghstudios.lemonsqueezy.com">ghstudios.lemonsqueezy.com</a></p>
 
 </body>
 </html>
