@@ -8,6 +8,21 @@
     <description>ContextMeter update feed</description>
     <language>en</language>
     <item>
+      <title>Version 1.3.3</title>
+      <description><![CDATA[<!DOCTYPE html><html><head><meta charset="utf-8"><style>*{box-sizing:border-box;margin:0;padding:0}html,body{background:#1c1c1e!important;height:100%}div.wrap{position:fixed;inset:0;background:#1c1c1e;overflow:auto;padding:16px 20px}h2{font-size:15px;font-weight:600;color:#7dd3fc;margin-bottom:4px}ul{margin:6px 0 12px;padding-left:18px}li{margin-bottom:4px;line-height:1.4;color:#e8e8e8}strong{color:#fff}.sub{color:#888;font-size:12px;margin-bottom:10px}</style></head><body><div class="wrap"><h2>ContextMeter 1.3.3</h2><p class="sub">Released May 2026</p><ul><li><strong>Bug fix</strong> — Recent Sessions no longer shows sessions with zero activity (sessions opened but immediately closed)</li><li><strong>Bug fix</strong> — Today / This Week / This Month stats now correctly count activity from long-running sessions, even if the session started on a previous day</li></ul><p class="sub">Questions? apps.ghsnyc@gmail.com</p></div></body></html>]]></description>
+      <pubDate>Tue, 12 May 2026 08:21:24 -0400</pubDate>
+      <enclosure
+        url="https://github.com/ghsnyc/ContextMeter-Releases/releases/latest/download/ContextMeter.pkg"
+        sparkle:version="7"
+        sparkle:shortVersionString="1.3.3"
+        sparkle:edSignature="xKab46b+8kseXPixN7rR6HOXzG0WqR1zwvKbS5ljkaVhybEZfwQWPU0cLFXOf8a2NWWVQHB/jmnDpn1eGnvJDg=="
+        length="2006963"
+        type="application/octet-stream"
+      />
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+    </item>
+
+    <item>
       <title>Version 1.3.2</title>
       <description><![CDATA[<!DOCTYPE html><html><head><meta charset="utf-8"><style>*{box-sizing:border-box;margin:0;padding:0}html,body{background:#1c1c1e!important;height:100%}div.wrap{position:fixed;inset:0;background:#1c1c1e;overflow:auto;padding:16px 20px}h2{font-size:15px;font-weight:600;color:#7dd3fc;margin-bottom:4px}ul{margin:6px 0 12px;padding-left:18px}li{margin-bottom:4px;line-height:1.4;color:#e8e8e8}strong{color:#fff}.sub{color:#888;font-size:12px;margin-bottom:10px}</style></head><body><div class="wrap"><h2>ContextMeter 1.3.2</h2><p class="sub">Released May 2026</p><ul><li><strong>User Manual</strong> — built-in help guide now opens from the About tab (works offline, no internet needed)</li><li>Manual explains token types, rate limits, cost estimates, and context window with real examples</li></ul><p class="sub">Questions? apps.ghsnyc@gmail.com</p></div></body></html>]]></description>
       <pubDate>Sun, 10 May 2026 19:42:08 -0400</pubDate>
