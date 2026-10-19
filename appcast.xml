@@ -8,6 +8,21 @@
     <description>ContextMeter update feed</description>
     <language>en</language>
     <item>
+      <title>Version 1.3.10</title>
+      <description><![CDATA[<!DOCTYPE html><html><head><meta charset="utf-8"><style>*{box-sizing:border-box;margin:0;padding:0}html,body{background:#1c1c1e!important;height:100%}div.wrap{position:fixed;inset:0;background:#1c1c1e;overflow:auto;padding:16px 20px}h2{font-size:15px;font-weight:600;color:#7dd3fc;margin-bottom:4px}ul{margin:6px 0 12px;padding-left:18px}li{margin-bottom:4px;line-height:1.4;color:#e8e8e8}strong{color:#fff}.sub{color:#888;font-size:12px;margin-bottom:10px}</style></head><body><div class="wrap"><h2>ContextMeter 1.3.10</h2><p class="sub">Released October 2026</p><ul><li><strong>No more "Intel-based app" warning</strong> — the installer now declares that it runs natively on Apple silicon, so macOS no longer launches the install scripts through Rosetta when you install or update. ContextMeter itself was already native.</li></ul><p class="sub">Questions? <a href="mailto:apps.ghsnyc@gmail.com">apps.ghsnyc@gmail.com</a></p></div></body></html>]]></description>
+      <pubDate>Mon, 19 Oct 2026 08:13:28 -0400</pubDate>
+      <enclosure
+        url="https://github.com/ghsnyc/ContextMeter-Releases/releases/latest/download/ContextMeter.pkg"
+        sparkle:version="14"
+        sparkle:shortVersionString="1.3.10"
+        sparkle:edSignature="LkloXW4pdHh/aSPkH2foTrVIXRxjQONPEY96YX96/CVPTTywhtSuFEba+W92TrwiHockvDpWBESsDo8STMvrCA=="
+        length="2029547"
+        type="application/octet-stream"
+      />
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+    </item>
+
+    <item>
       <title>Version 1.3.9</title>
       <description><![CDATA[<!DOCTYPE html><html><head><meta charset="utf-8"><style>*{box-sizing:border-box;margin:0;padding:0}html,body{background:#1c1c1e!important;height:100%}div.wrap{position:fixed;inset:0;background:#1c1c1e;overflow:auto;padding:16px 20px}h2{font-size:15px;font-weight:600;color:#7dd3fc;margin-bottom:4px}ul{margin:6px 0 12px;padding-left:18px}li{margin-bottom:4px;line-height:1.4;color:#e8e8e8}strong{color:#fff}.sub{color:#888;font-size:12px;margin-bottom:10px}</style></head><body><div class="wrap"><h2>ContextMeter 1.3.9</h2><p class="sub">Released October 2026</p><ul><li><strong>New Claude models, automatically</strong> — when a brand-new Claude model comes out, ContextMeter now sizes its context window from the model's version number (4.6 and newer = 1M tokens), so the gauge is right from the first message instead of showing an impossible percentage until the next update.</li><li><strong>Settings</strong> — the context window override is now labelled "Window size override" (it no longer mentions specific models) and gains a 200K option.</li></ul><p class="sub">Questions? <a href="mailto:apps.ghsnyc@gmail.com">apps.ghsnyc@gmail.com</a></p></div></body></html>]]></description>
       <pubDate>Thu, 15 Oct 2026 09:49:04 -0400</pubDate>
